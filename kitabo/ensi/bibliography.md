@@ -1,0 +1,6 @@
+(outcomes)=
+# Certainty, γ 😃 ⭕️ 
+
+```{bibliography}
+```
+ 
