@@ -4,7 +4,7 @@
 
 #######################################################################################
 # Book settings
-title                       : Mperekezi # The title of the book. Will be placed in the left navbar.
+title                       : Ukuphelezela # The title of the book. Will be placed in the left navbar.
 author                      :  # The author of the book
 copyright                   : "2025"  # Copyright year to be placed in the footer
 logo                        : https://images.squarespace-cdn.com/content/v1/5a6d50d8017db24a060f8977/1518500481830-TW3S3GNRVGZXU913NW2X/ConsilienceLogo.png?format=750w # Path to the logo image file
