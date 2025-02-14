@@ -46,11 +46,11 @@ chapters:
       - title: 'Appendix 🧭'
         file: act3/act3
         sections:
-          - title: Frailty
+          - title: Appendix-1
             file: act3/part3/part3_1
-          - title: Hospitalization
+          - title: Appendix-2
             file: act3/part3/part3_2
-          - title: Mortality
+          - title: Appendix-3
             file: act3/part3/part3_3
 
   - file: bibliography
