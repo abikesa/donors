@@ -5,52 +5,52 @@ chapters:
   # Sing O Muse!
   - file: act1/part1
     sections:
-      - title: Databases
+      - title: Ecosystem
         file: act1/chapter1
-      - title: Collaborators
+      - title: Integration
         file: act1/chapter2
-      - title: Disclosure Risk
+      - title: Back-End
         file: act1/chapter3
         
   # Sing O Muse!
   - file: act2/part2
     sections:
-      - title: Hospital Records
+      - title: Baseline
         file: act2/chapter1
-      - title: Patient Care
+      - title: Decision
         file: act2/chapter2
-      - title: Insurance Coverage
+      - title: Attribution
         file: act2/chapter3
 
   # Apollo
   - file: act3/part3
     sections:
-      - title: 'Information 🌊'
+      - title: 'Followup 🌊'
         file: act3/act1
         sections:
-          - title: Decision
+          - title: Adverse Events
             file: act3/part1/part1_1
-          - title: Baseline
+          - title: Exposures
             file: act3/part1/part1_2
-          - title: Exposure
+          - title: Other Changes
             file: act3/part1/part1_3
-      - title: 'Followup ⚓️'
+      - title: 'Outcomes ⚓️'
         file: act3/act2
         sections:
-          - title: Adverse Events
+          - title: Frailty
             file: act3/part2/part2_1
-          - title: ICD Codes
+          - title: Hospitalization
             file: act3/part2/part2_2
-          - title: Ecosystem Updates
+          - title: Mortality
             file: act3/part2/part2_3
-      - title: 'Outcomes 🧭'
+      - title: 'Appendix 🧭'
         file: act3/act3
         sections:
           - title: Frailty
             file: act3/part3/part3_1
           - title: Hospitalization
             file: act3/part3/part3_2
-          - title: Death
+          - title: Mortality
             file: act3/part3/part3_3
 
   - file: bibliography
