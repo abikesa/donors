@@ -201,7 +201,7 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="act1.html">Followup 🌊</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="part1/part1_1.html">Adverse Events</a></li>
 
-<li class="toctree-l3"><a class="reference internal" href="part1/part1_2.html">Exposures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="part1/part1_2.html">Comorbidity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="part1/part1_3.html">Other Changes</a></li>
 
 </ul>
@@ -424,16 +424,16 @@ document.write(`
         <span class="s1">&#39;Suis&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Patient Care&#39;</span><span class="p">,</span> <span class="s1">&#39;Hospital Records&#39;</span><span class="p">,</span> <span class="s1">&#39;Disclosure Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Collaborators&#39;</span><span class="p">,</span> <span class="s1">&#39;Databases&#39;</span><span class="p">,</span> <span class="s1">&#39;Analytic Scripts</span><span class="se">\n</span><span class="s1"> 95/5&#39;</span><span class="p">,</span> <span class="p">],</span> <span class="c1"># Static</span>
         <span class="s1">&#39;Voir&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Information</span><span class="se">\n</span><span class="s1"> 80/20&#39;</span><span class="p">],</span>  
         <span class="s1">&#39;Choisis&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Baseline&#39;</span><span class="p">,</span> <span class="s1">&#39;Decision</span><span class="se">\n</span><span class="s1"> 51/49&#39;</span><span class="p">],</span>  
-        <span class="s1">&#39;Deviens&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Adverse Event Markers&#39;</span><span class="p">,</span> <span class="s1">&#39;Exposure of Interest&#39;</span><span class="p">,</span> <span class="s1">&#39;Other Changes</span><span class="se">\n</span><span class="s1"> 20/80&#39;</span><span class="p">],</span>  
-        <span class="s2">&quot;M&#39;èléve&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Mortality&#39;</span><span class="p">,</span> <span class="s1">&#39;Organ Failure&#39;</span><span class="p">,</span>  <span class="s1">&#39;Hospitalization&#39;</span><span class="p">,</span> <span class="s1">&#39;Physical Frailty&#39;</span><span class="p">,</span> <span class="s1">&#39;Follow-up Care</span><span class="se">\n</span><span class="s1"> 5/95&#39;</span><span class="p">]</span>  
+        <span class="s1">&#39;Deviens&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Adverse Event Markers&#39;</span><span class="p">,</span> <span class="s1">&#39;Comorbidity&#39;</span><span class="p">,</span> <span class="s1">&#39;Other Changes</span><span class="se">\n</span><span class="s1"> 20/80&#39;</span><span class="p">],</span>  
+        <span class="s2">&quot;M&#39;èléve&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Mortality&#39;</span><span class="p">,</span> <span class="s1">&#39;Organ Failure&#39;</span><span class="p">,</span>  <span class="s1">&#39;Hospitalization&#39;</span><span class="p">,</span> <span class="s1">&#39;Dependency&#39;</span><span class="p">,</span> <span class="s1">&#39;Physical Frailty</span><span class="se">\n</span><span class="s1"> 5/95&#39;</span><span class="p">]</span>  
     <span class="p">}</span>
 
 <span class="c1"># Assign colors to nodes</span>
 <span class="k">def</span> <span class="nf">assign_colors</span><span class="p">():</span>
     <span class="n">color_map</span> <span class="o">=</span> <span class="p">{</span> <span class="c1"># Dynamic</span>
         <span class="s1">&#39;yellow&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Information</span><span class="se">\n</span><span class="s1"> 80/20&#39;</span><span class="p">],</span>  
-        <span class="s1">&#39;paleturquoise&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Analytic Scripts</span><span class="se">\n</span><span class="s1"> 95/5&#39;</span><span class="p">,</span> <span class="s1">&#39;Decision</span><span class="se">\n</span><span class="s1"> 51/49&#39;</span><span class="p">,</span> <span class="s1">&#39;Other Changes</span><span class="se">\n</span><span class="s1"> 20/80&#39;</span><span class="p">,</span> <span class="s1">&#39;Follow-up Care</span><span class="se">\n</span><span class="s1"> 5/95&#39;</span><span class="p">],</span>  
-        <span class="s1">&#39;lightgreen&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Databases&#39;</span><span class="p">,</span> <span class="s1">&#39;Exposure of Interest&#39;</span><span class="p">,</span> <span class="s1">&#39;Organ Failure&#39;</span><span class="p">,</span> <span class="s1">&#39;Physical Frailty&#39;</span><span class="p">,</span> <span class="s1">&#39;Hospitalization&#39;</span><span class="p">],</span>  
+        <span class="s1">&#39;paleturquoise&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Analytic Scripts</span><span class="se">\n</span><span class="s1"> 95/5&#39;</span><span class="p">,</span> <span class="s1">&#39;Decision</span><span class="se">\n</span><span class="s1"> 51/49&#39;</span><span class="p">,</span> <span class="s1">&#39;Other Changes</span><span class="se">\n</span><span class="s1"> 20/80&#39;</span><span class="p">,</span> <span class="s1">&#39;Physical Frailty</span><span class="se">\n</span><span class="s1"> 5/95&#39;</span><span class="p">],</span>  
+        <span class="s1">&#39;lightgreen&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Databases&#39;</span><span class="p">,</span> <span class="s1">&#39;Comorbidity&#39;</span><span class="p">,</span> <span class="s1">&#39;Organ Failure&#39;</span><span class="p">,</span> <span class="s1">&#39;Dependency&#39;</span><span class="p">,</span> <span class="s1">&#39;Hospitalization&#39;</span><span class="p">],</span>  
         <span class="s1">&#39;lightsalmon&#39;</span><span class="p">:</span> <span class="p">[</span>
             <span class="s1">&#39;Disclosure Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Collaborators&#39;</span><span class="p">,</span> <span class="s1">&#39;Baseline&#39;</span><span class="p">,</span>  
             <span class="s1">&#39;Adverse Event Markers&#39;</span><span class="p">,</span> <span class="s1">&#39;Mortality&#39;</span>
@@ -486,7 +486,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/1cb5cb88f6f4cb40eabb37a50c67a4dcdc17402e8254bc384055965e63170275.png" src="../_images/1cb5cb88f6f4cb40eabb37a50c67a4dcdc17402e8254bc384055965e63170275.png" />
+<img alt="../_images/0e0159ad9e6c8cba033dbdf0839fe15bcfa7afb0328d2ce61ea381893f75bc71.png" src="../_images/0e0159ad9e6c8cba033dbdf0839fe15bcfa7afb0328d2ce61ea381893f75bc71.png" />
 </div>
 </div>
 <figure class="align-default" id="id2">
