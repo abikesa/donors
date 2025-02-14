@@ -405,6 +405,94 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="appendix">
 <span id="id1"></span><h1>Appendix<a class="headerlink" href="#appendix" title="Permalink to this heading">#</a></h1>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+
+<span class="c1"># Define the neural network fractal</span>
+<span class="k">def</span> <span class="nf">define_layers</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;Suis&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Patient Care&#39;</span><span class="p">,</span> <span class="s1">&#39;Hospital Records&#39;</span><span class="p">,</span> <span class="s1">&#39;Disclosure Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Collaborators&#39;</span><span class="p">,</span> <span class="s1">&#39;Databases&#39;</span><span class="p">,</span> <span class="s1">&#39;Analytic Scripts</span><span class="se">\n</span><span class="s1"> 95/5&#39;</span><span class="p">,</span> <span class="p">],</span> <span class="c1"># Static</span>
+        <span class="s1">&#39;Voir&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Information</span><span class="se">\n</span><span class="s1"> 80/20&#39;</span><span class="p">],</span>  
+        <span class="s1">&#39;Choisis&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Baseline&#39;</span><span class="p">,</span> <span class="s1">&#39;Decision</span><span class="se">\n</span><span class="s1"> 51/49&#39;</span><span class="p">],</span>  
+        <span class="s1">&#39;Deviens&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Adverse Event Markers&#39;</span><span class="p">,</span> <span class="s1">&#39;Exposure of Interest&#39;</span><span class="p">,</span> <span class="s1">&#39;Other Changes</span><span class="se">\n</span><span class="s1"> 20/80&#39;</span><span class="p">],</span>  
+        <span class="s2">&quot;M&#39;èléve&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Mortality&#39;</span><span class="p">,</span> <span class="s1">&#39;Organ Failure&#39;</span><span class="p">,</span>  <span class="s1">&#39;Hospitalization&#39;</span><span class="p">,</span> <span class="s1">&#39;Physical Frailty&#39;</span><span class="p">,</span> <span class="s1">&#39;Follow-up Care</span><span class="se">\n</span><span class="s1"> 5/95&#39;</span><span class="p">]</span>  
+    <span class="p">}</span>
+
+<span class="c1"># Assign colors to nodes</span>
+<span class="k">def</span> <span class="nf">assign_colors</span><span class="p">():</span>
+    <span class="n">color_map</span> <span class="o">=</span> <span class="p">{</span> <span class="c1"># Dynamic</span>
+        <span class="s1">&#39;yellow&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Information</span><span class="se">\n</span><span class="s1"> 80/20&#39;</span><span class="p">],</span>  
+        <span class="s1">&#39;paleturquoise&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Analytic Scripts</span><span class="se">\n</span><span class="s1"> 95/5&#39;</span><span class="p">,</span> <span class="s1">&#39;Decision</span><span class="se">\n</span><span class="s1"> 51/49&#39;</span><span class="p">,</span> <span class="s1">&#39;Other Changes</span><span class="se">\n</span><span class="s1"> 20/80&#39;</span><span class="p">,</span> <span class="s1">&#39;Follow-up Care</span><span class="se">\n</span><span class="s1"> 5/95&#39;</span><span class="p">],</span>  
+        <span class="s1">&#39;lightgreen&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Databases&#39;</span><span class="p">,</span> <span class="s1">&#39;Exposure of Interest&#39;</span><span class="p">,</span> <span class="s1">&#39;Organ Failure&#39;</span><span class="p">,</span> <span class="s1">&#39;Physical Frailty&#39;</span><span class="p">,</span> <span class="s1">&#39;Hospitalization&#39;</span><span class="p">],</span>  
+        <span class="s1">&#39;lightsalmon&#39;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s1">&#39;Disclosure Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Collaborators&#39;</span><span class="p">,</span> <span class="s1">&#39;Baseline&#39;</span><span class="p">,</span>  
+            <span class="s1">&#39;Adverse Event Markers&#39;</span><span class="p">,</span> <span class="s1">&#39;Mortality&#39;</span>
+        <span class="p">],</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">node</span><span class="p">:</span> <span class="n">color</span> <span class="k">for</span> <span class="n">color</span><span class="p">,</span> <span class="n">nodes</span> <span class="ow">in</span> <span class="n">color_map</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">}</span>
+
+<span class="c1"># Calculate positions for nodes</span>
+<span class="k">def</span> <span class="nf">calculate_positions</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">x_offset</span><span class="p">):</span>
+    <span class="n">y_positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">layer</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">[(</span><span class="n">x_offset</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">y_positions</span><span class="p">]</span>
+
+<span class="c1"># Create and visualize the neural network graph</span>
+<span class="k">def</span> <span class="nf">visualize_nn</span><span class="p">():</span>
+    <span class="n">layers</span> <span class="o">=</span> <span class="n">define_layers</span><span class="p">()</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="n">assign_colors</span><span class="p">()</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">node_colors</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Add nodes and assign positions</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">layer_name</span><span class="p">,</span> <span class="n">nodes</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+        <span class="n">positions</span> <span class="o">=</span> <span class="n">calculate_positions</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">x_offset</span><span class="o">=</span><span class="n">i</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">position</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">positions</span><span class="p">):</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="n">layer_name</span><span class="p">)</span>
+            <span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="n">position</span>
+            <span class="n">node_colors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">colors</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;lightgray&#39;</span><span class="p">))</span>   
+
+    <span class="c1"># Add edges (automated for consecutive layers)</span>
+    <span class="n">layer_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">layer_names</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">source_layer</span><span class="p">,</span> <span class="n">target_layer</span> <span class="o">=</span> <span class="n">layer_names</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">layer_names</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">source</span> <span class="ow">in</span> <span class="n">layers</span><span class="p">[</span><span class="n">source_layer</span><span class="p">]:</span>
+            <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">layers</span><span class="p">[</span><span class="n">target_layer</span><span class="p">]:</span>
+                <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+
+    <span class="c1"># Draw the graph</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+        <span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">node_colors</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span>
+        <span class="n">node_size</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">connectionstyle</span><span class="o">=</span><span class="s2">&quot;arc3,rad=0.2&quot;</span>
+    <span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Holy Grail&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Run the visualization</span>
+<span class="n">visualize_nn</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/1cb5cb88f6f4cb40eabb37a50c67a4dcdc17402e8254bc384055965e63170275.png" src="../_images/1cb5cb88f6f4cb40eabb37a50c67a4dcdc17402e8254bc384055965e63170275.png" />
+</div>
+</div>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="https://www.ledr.com/colours/white.jpg"><img alt="https://www.ledr.com/colours/white.jpg" src="https://www.ledr.com/colours/white.jpg" style="width: 1px; height: 1px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">This visualization encodes a hierarchical decision-making network, with <strong>Suis → Voir → Choisis → Deviens → M’élève</strong> capturing a structured progression from <strong>static records to dynamic evolution</strong>, ultimately culminating in <strong>clinical outcomes</strong>. The color scheme aligns with <strong>RICHER’s</strong> dynamic layers—<strong>paleturquoise (analytic scripts &amp; decision layers), lightgreen (databases &amp; exposure markers), lightsalmon (risk &amp; mortality nodes), and yellow (informational precondition)</strong>—while <strong>grey nodes represent neutral or unclassified elements, acting as stabilizers or latent connectors in the system</strong>. The <strong>weighted distributions (e.g., 95/5, 80/20, 51/49, 20/80, 5/95)</strong> reflect <strong>asymmetries in signal strength, agency, and iterative selection</strong>, mirroring an <strong>entropy-driven neural network encoding causality within a medical epistemic frame</strong>. The title <strong>“Holy Grail”</strong> was chosen for irony, aspiration, and as a reflection of a personalized ideal within the model, thus working as a provocative framing device opening up the question of what exactly is being <code class="docutils literal notranslate"><span class="pre">optimized</span></code>. Our intent is not to capture the <strong>epistemic structure</strong> of this neural network as a <strong>decision-making crucible</strong>—a layered process of filtration, iteration, and emergence—and so the title doesn’t reflect <strong>compression, thresholds, or the transformation of knowledge into decisive action</strong>. But it just might as well achieve those things as emergent phenomena</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="toctree-wrapper compound">
 </div>
 </section>
