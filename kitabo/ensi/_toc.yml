@@ -30,7 +30,7 @@ chapters:
         sections:
           - title: Adverse Events
             file: act3/part1/part1_1
-          - title: Exposures
+          - title: Comorbidity
             file: act3/part1/part1_2
           - title: Other Changes
             file: act3/part1/part1_3
