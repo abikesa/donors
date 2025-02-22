@@ -2,7 +2,7 @@
 # Users are expected to override these values in their own `_config.yml` file.
 # This is also the "master list" of all allowed keys and values.
 
-#######################################################################################
+####################################################################################### https://www.ledr.com/colours/white.jpg
 # Book settings
 title                       : Ukuphelezela # The title of the book. Will be placed in the left navbar.
 author                      :  # The author of the book
@@ -11,14 +11,14 @@ logo                        : https://images.squarespace-cdn.com/content/v1/5a6d
 email                       : "abikesa.sh@gmail.com"
 exclude_patterns            : ["LICENSE.md"]  # Patterns to skip when building the book. Can be glob-style (for example "*skip.ipynb")
 
-#######################################################################################
+####################################################################################### https://www.ledr.com/colours/white.jpg
 # Execution settings
 execute:
   execute_notebooks         : auto  # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
   cache                     : ""  # A path to the jupyter cache that will be used to store execution artifacts. Defaults to `_build/.jupyter_cache/`
   exclude_patterns          : ["LICENSE.md"]  # A list of patterns to *skip* in execution (for example a notebook that takes a really long time)
 
-#######################################################################################
+####################################################################################### https://www.ledr.com/colours/white.jpg
 # HTML-specific settings
 html:
   navbar_number_sections    : False  # Add a number to each section in your left navbar
@@ -33,7 +33,7 @@ html:
   extra_css:
     - "_static/custom.css"
 
-#######################################################################################
+####################################################################################### https://www.ledr.com/colours/white.jpg
 # Launch button settings
 launch_buttons:
   notebook_interface        : "classic"  # The interface interactive links will activate ["classic", "jupyterlab"]
